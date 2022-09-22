@@ -4,7 +4,10 @@ const DICTIONARY = {
     ";": "LINE_END",
     "iprinta": "FUNC_CALL",
     "(": "L_PAREN",
-    ")": "R_PAREN"
+    ")": "R_PAREN",
+    "panksyon": "FUNC_DECLARATION",
+    ":": "FUNC_START",
+    "tapos": "FUNC_END"
 }
 
 class Lexer {
@@ -29,7 +32,7 @@ class Lexer {
             
         }
 
-        if(/[a-zA-Z0-9\=\;\(\)\"]/.test(this.char)) {
+        if(/[a-zA-Z0-9\=\;\(\)\"\:]/.test(this.char)) {
             let type = "VAR_NAME";
 
             if(this.char == "\"") {
@@ -40,7 +43,7 @@ class Lexer {
                 setBuffer();
             }
 
-            if(/[\;]/.test(this.char)) {
+            if(/[\;\:]/.test(this.char)) {
                 setBuffer();
             }
 
@@ -78,9 +81,9 @@ class Lexer {
             const token = this.getToken();
             if(token['type'] == 'SPACE') {
                 this.next();
+            } else {
+                this.tokens.push(token);
             }
-            this.tokens.push(token);
-
             
         }
         return this;

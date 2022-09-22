@@ -1,5 +1,8 @@
-hayaan x = 69;
-iprinta(x);
-
 hayaan name = "derrick";
-iprinta(name);
+
+panksyon greet(name):
+    iprinta(name);
+tapos;
+
+greet(name);
+greet("test 1234");

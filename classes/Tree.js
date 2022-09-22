@@ -24,8 +24,9 @@ class FuncCallNode {
 
 class FuncNode {
     constructor(value) {
-        this.name = null;
+        this.name = value;
         this.body = null;
+        this.params = null;
     }
 }
 
